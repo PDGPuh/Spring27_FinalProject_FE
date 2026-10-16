@@ -124,56 +124,56 @@ export function DashboardView() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* 1. UMC Split Department Header Banner (Modeled after Khoa CĐHA bvdaihoc.com.vn) */}
-      <div className="grid gap-4 rounded-2xl border border-primary-100 bg-white p-4 overview-wrapper-shadow lg:grid-cols-12 sm:p-5">
-        <div className="flex flex-col justify-between rounded-xl bg-primary-600 p-5 text-white shadow-main-blue lg:col-span-6">
+      {/* 1. Split Department Header Banner */}
+      <div className="grid gap-5 rounded-2xl border border-primary-100 bg-white p-5 overview-wrapper-shadow lg:grid-cols-12 sm:p-6">
+        <div className="flex flex-col justify-between rounded-2xl bg-gradient-to-br from-[#073B7A] via-primary-600 to-primary-500 p-6 text-white shadow-main-blue lg:col-span-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-[0.04em]">
-              <ShieldCheck className="size-3.5 text-primary-200" />
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-[13px] font-extrabold uppercase tracking-[0.04em]">
+              <ShieldCheck className="size-4 text-sky-200" />
               {role.label} · KHOA CHẨN ĐOÁN HÌNH ẢNH
             </span>
-            <span className="text-xs text-primary-100 tabular-nums">
+            <span className="text-[13.5px] font-semibold text-sky-100 tabular-nums">
               Ca trực: 16/04/2026
             </span>
           </div>
-          <div className="mt-3">
-            <h1 className="text-[24px] font-bold leading-tight tracking-tight text-white sm:text-[26px]">
+          <div className="mt-4">
+            <h1 className="text-[26px] font-black leading-tight tracking-tight text-white sm:text-[30px]">
               Trung tâm Điều hành · {role.name}
             </h1>
-            <p className="mt-1.5 text-xs leading-relaxed text-primary-75">
+            <p className="mt-2 text-[15px] font-medium leading-relaxed text-sky-50">
               {role.description}
             </p>
           </div>
-          <div className="mt-4 flex flex-wrap items-center gap-2 pt-2 border-t border-white/15">
+          <div className="mt-5 flex flex-wrap items-center gap-2.5 border-t border-white/15 pt-4">
             {quickLinks.map((l, idx) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-bold transition-colors ${
+                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-[14px] font-extrabold transition-colors ${
                   idx === 0
-                    ? "bg-white text-primary-600 hover:bg-primary-50"
+                    ? "bg-white text-primary-700 hover:bg-primary-50"
                     : "border border-white/35 bg-primary-700/60 text-white hover:bg-primary-700"
                 }`}
               >
                 {l.label}
-                {idx === 0 && <ArrowRight className="size-3.5" />}
+                {idx === 0 && <ArrowRight className="size-4" />}
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Right 6 cols: Time Filter (Coss UI Segmented Tabs) + Triage Summary Strip */}
-        <div className="flex flex-col justify-between gap-3 rounded-xl bg-primary-75/50 p-4 lg:col-span-6 border border-primary-100">
-          <div className="flex flex-wrap items-center justify-between gap-2">
+        {/* Right 6 cols: Time Filter + Triage Summary Strip */}
+        <div className="flex flex-col justify-between gap-4 rounded-2xl border border-primary-100 bg-primary-75/55 p-5 lg:col-span-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.04em] text-primary-700">
+              <p className="text-[13.5px] font-extrabold uppercase tracking-[0.04em] text-primary-800">
                 CHẾ ĐỘ THEO DÕI VẬN HÀNH
               </p>
-              <p className="text-xs text-text-secondary">
+              <p className="mt-0.5 text-[14px] font-medium text-text-secondary">
                 Đồng bộ dữ liệu PACS & hàng đợi theo thời gian thực
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <SegmentedTabsParticle
                 size="sm"
                 active={period}
@@ -186,28 +186,28 @@ export function DashboardView() {
               />
               <button
                 type="button"
-                className="inline-flex size-8.5 items-center justify-center rounded-lg border border-primary-200 bg-white text-primary-600 transition-colors hover:bg-primary-600 hover:text-white"
+                className="inline-flex size-10.5 items-center justify-center rounded-xl border border-primary-200 bg-white text-primary-700 transition-colors hover:bg-primary-600 hover:text-white"
                 aria-label="Làm mới"
               >
-                <RefreshCw className="size-3.5" />
+                <RefreshCw className="size-4.5" />
               </button>
             </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3.5 sm:grid-cols-3">
             <Link
               href="/dashboard/worklist"
-              className="relative flex items-center gap-3 overflow-hidden rounded-xl border border-red-200 bg-white p-3.5 shadow-2xs transition-transform hover:-translate-y-0.5"
+              className="relative flex items-center gap-3.5 overflow-hidden rounded-2xl border border-red-200 bg-white p-4 shadow-2xs transition-transform hover:-translate-y-0.5"
             >
               <BorderBeam size={140} duration={9} colorFrom="#dc2626" colorTo="#0d71ba" />
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-red-50 text-critical">
-                <AlertTriangle className="size-5" />
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-red-50 text-critical">
+                <AlertTriangle className="size-5.5" />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-bold uppercase text-critical">
+                <p className="text-[12.5px] font-extrabold uppercase text-critical">
                   AI Critical
                 </p>
-                <p className="text-xl font-bold text-primary-900 tabular-nums">
+                <p className="mt-0.5 text-[22px] font-black text-primary-950 tabular-nums">
                   {criticalCount} ca
                 </p>
               </div>
@@ -215,37 +215,39 @@ export function DashboardView() {
 
             <Link
               href="/dashboard/worklist"
-              className="flex items-center gap-3 rounded-xl border border-amber-200 bg-white p-3.5 shadow-2xs transition-transform hover:-translate-y-0.5"
+              className="flex items-center gap-3.5 rounded-2xl border border-amber-200 bg-white p-4 shadow-2xs transition-transform hover:-translate-y-0.5"
             >
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-amber-50 text-amber-700">
-                <Clock3 className="size-5" />
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
+                <Clock3 className="size-5.5" />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-bold uppercase text-amber-800">
+                <p className="text-[12.5px] font-extrabold uppercase text-amber-800">
                   Ca Chờ đọc
                 </p>
-                <p className="text-xl font-bold text-primary-900 tabular-nums">
+                <p className="mt-0.5 text-[22px] font-black text-primary-950 tabular-nums">
                   {waitingCount} ca
                 </p>
               </div>
             </Link>
 
-            <div className="flex items-center gap-3 rounded-xl border border-primary-200 bg-white p-3.5 shadow-2xs">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-600">
-                <Activity className="size-5" />
+            <div className="flex items-center gap-3.5 rounded-2xl border border-primary-200 bg-white p-4 shadow-2xs">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
+                <Activity className="size-5.5" />
               </span>
               <div>
-                <p className="text-[11px] font-bold uppercase text-primary-700">
+                <p className="text-[12.5px] font-extrabold uppercase text-primary-800">
                   Đồng thuận AI–BS
                 </p>
-                <p className="text-xl font-bold text-primary-600 tabular-nums">92%</p>
+                <p className="mt-0.5 text-[22px] font-black text-primary-700 tabular-nums">
+                  92%
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 2. UMC KPI Stat Cards (rounded-t-xl border-b-[5px] border-primary-600) */}
+      {/* 2. KPI Stat Cards */}
       <Stagger className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {cards.map((kpi) => {
           const Icon = iconMap[kpi.icon];
@@ -253,32 +255,34 @@ export function DashboardView() {
           const spark = kpiSparks[kpi.icon] ?? kpiSparks.cases;
           return (
             <StaggerItem key={kpi.label}>
-              <article className="card-lift flex h-full flex-col justify-between rounded-t-xl rounded-b-lg border border-primary-100 border-b-[5px] border-b-primary-600 bg-white p-4">
+              <article className="card-lift flex h-full flex-col justify-between rounded-2xl border border-primary-100 border-b-[5px] border-b-primary-600 bg-white p-5">
                 <div className="flex items-start justify-between gap-2">
-                  <p className="text-xs font-semibold leading-snug text-text-secondary">
+                  <p className="text-[14px] font-extrabold leading-snug text-text-secondary">
                     {kpi.label}
                   </p>
-                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-600">
-                    <Icon className="size-4" />
+                  <span className="inline-flex size-10.5 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-600">
+                    <Icon className="size-5" />
                   </span>
                 </div>
-                <p className="mt-2 text-[30px] font-bold leading-none tracking-tight text-primary-800 tabular-nums">
+                <p className="mt-3 text-[34px] font-black leading-none tracking-tight text-primary-950 tabular-nums">
                   {kpi.value}
                 </p>
-                <div className="mt-2">
+                <div className="mt-3">
                   <Sparkline data={spark} color={sparkColor[kpi.icon] ?? "#0d71ba"} />
                 </div>
                 {kpi.trend ? (
                   <p
-                    className={`mt-1 inline-flex items-center gap-1 text-xs font-semibold ${
-                      kpi.up ? "text-emerald-700" : "text-primary-600"
+                    className={`mt-2 inline-flex items-center gap-1.5 text-[13.5px] font-bold ${
+                      kpi.up ? "text-emerald-700" : "text-primary-700"
                     }`}
                   >
-                    <Trend className="size-3.5" />
+                    <Trend className="size-4" />
                     {kpi.trend} so với hôm qua
                   </p>
                 ) : (
-                  <p className="mt-1 text-xs text-muted">Ổn định trong ca trực</p>
+                  <p className="mt-2 text-[13.5px] font-semibold text-muted">
+                    Ổn định trong ca trực
+                  </p>
                 )}
               </article>
             </StaggerItem>
@@ -287,38 +291,38 @@ export function DashboardView() {
       </Stagger>
 
       {/* 3. Main Charts Row */}
-      <div className="grid gap-4 xl:grid-cols-[1.45fr_1fr]">
-        <section className="rounded-xl border border-primary-100 bg-white p-5 overview-wrapper-shadow">
-          <div className="mb-2 flex flex-wrap items-center justify-between gap-2 border-b border-primary-50 pb-3">
+      <div className="grid gap-5 xl:grid-cols-[1.45fr_1fr]">
+        <section className="rounded-2xl border border-primary-100 bg-white p-6 overview-wrapper-shadow">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-primary-100 pb-4">
             <div>
-              <h2 className="heading-2 text-primary-800">
+              <h2 className="text-[20px] font-extrabold text-primary-950">
                 Lưu lượng Ca chụp X-quang theo Giờ
               </h2>
-              <p className="text-xs text-text-secondary">
+              <p className="mt-0.5 text-[14px] font-medium text-text-secondary">
                 Phân tầng tự động Normal / High / Critical từ hệ thống PACS
               </p>
             </div>
-            <div className="flex items-center gap-3 text-xs font-medium text-text-secondary">
+            <div className="flex items-center gap-4 text-[13.5px] font-bold text-text-secondary">
               <span className="inline-flex items-center gap-1.5">
-                <i className="size-2.5 rounded-xs bg-primary-600" /> Normal
+                <i className="size-3 rounded-xs bg-primary-600" /> Normal
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <i className="size-2.5 rounded-xs bg-warning" /> High
+                <i className="size-3 rounded-xs bg-warning" /> High
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <i className="size-2.5 rounded-xs bg-critical" /> Critical
+                <i className="size-3 rounded-xs bg-critical" /> Critical
               </span>
             </div>
           </div>
           <HourlyStackedChart data={hourlyCasesChart} />
         </section>
 
-        <section className="rounded-xl border border-primary-100 bg-white p-5 overview-wrapper-shadow">
-          <div className="border-b border-primary-50 pb-3">
-            <h2 className="heading-2 text-primary-800">
+        <section className="rounded-2xl border border-primary-100 bg-white p-6 overview-wrapper-shadow">
+          <div className="border-b border-primary-100 pb-4">
+            <h2 className="text-[20px] font-extrabold text-primary-950">
               Tỷ lệ Đồng thuận Bác sĩ CĐHA & AI
             </h2>
-            <p className="text-xs text-text-secondary">
+            <p className="mt-0.5 text-[14px] font-medium text-text-secondary">
               Thống kê từ các quyết định Accept / Edit / Reject khi ký báo cáo
             </p>
           </div>
@@ -327,17 +331,17 @@ export function DashboardView() {
             centerValue="92%"
             centerLabel="Đồng thuận"
           />
-          <ul className="mt-2 flex flex-col gap-2 text-sm">
+          <ul className="mt-3 flex flex-col gap-2.5 text-[15px]">
             {aiDoctorAgreement.map((item) => (
               <li
                 key={item.name}
-                className="flex items-center justify-between rounded-lg bg-primary-50/40 px-3 py-1.5"
+                className="flex items-center justify-between rounded-xl bg-primary-50/55 px-4 py-2.5"
               >
-                <span className="inline-flex items-center gap-2 font-medium text-text-secondary">
-                  <i className="size-2.5 rounded-full" style={{ background: item.color }} />
+                <span className="inline-flex items-center gap-2.5 font-semibold text-primary-950">
+                  <i className="size-3 rounded-full" style={{ background: item.color }} />
                   {item.name}
                 </span>
-                <span className="font-bold text-primary-800 tabular-nums">
+                <span className="font-mono font-extrabold text-primary-900 tabular-nums">
                   {item.value}%
                 </span>
               </li>

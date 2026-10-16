@@ -14,22 +14,30 @@ export function Logo({
   showText = true,
 }: LogoProps) {
   const isDark = variant === "onDark" || variant === "dark";
-  const titleColor = isDark ? "text-white" : "text-primary-700";
-  const subTitleColor = isDark ? "text-primary-100" : "text-primary-500";
-  const iconBoxSize = size === "sm" ? "size-9" : "size-11";
-  const titleSize = size === "sm" ? "text-[14px]" : "text-[16px]";
+  const titleColor = isDark ? "text-white" : "text-primary-800";
+  const subTitleColor = isDark ? "text-sky-100/95" : "text-primary-600";
+  const iconBoxSize = size === "sm" ? "size-10.5" : "size-12";
+  const titleSize = size === "sm" ? "text-[16.5px]" : "text-[18.5px]";
+  const subTitleSize =
+    size === "sm"
+      ? "text-[10.5px] tracking-[0.02em]"
+      : "text-[11.5px] tracking-[0.035em]";
 
   const content = (
-    <span className="inline-flex shrink-0 items-center gap-3 whitespace-nowrap">
+    <span className="inline-flex min-w-0 max-w-full items-center gap-3">
       <span
-        className={`${iconBoxSize} relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[10px] border ${
+        className={`${iconBoxSize} relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-xl border ${
           isDark
-            ? "border-white/25 bg-gradient-to-br from-primary-400 to-primary-600 text-white shadow-xs"
-            : "border-primary-200 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-400 text-white shadow-xs"
+            ? "border-white/30 bg-gradient-to-br from-sky-400 to-primary-600 text-white shadow-sm"
+            : "border-primary-200 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-400 text-white shadow-sm"
         }`}
         aria-hidden
       >
-        <svg viewBox="0 0 28 28" className={size === "sm" ? "size-5" : "size-6"} fill="none">
+        <svg
+          viewBox="0 0 28 28"
+          className={size === "sm" ? "size-5.5" : "size-6.5"}
+          fill="none"
+        >
           <rect
             x="2.5"
             y="2.5"
@@ -57,14 +65,14 @@ export function Logo({
         </svg>
       </span>
       {showText && (
-        <span className="flex flex-col leading-tight">
+        <span className="flex min-w-0 flex-col leading-tight">
           <span
-            className={`font-extrabold tracking-tight ${titleSize} ${titleColor}`}
+            className={`truncate font-black tracking-tight ${titleSize} ${titleColor}`}
           >
             Hệ thống X-quang AI
           </span>
           <span
-            className={`mt-0.5 text-[11px] font-semibold uppercase tracking-[0.04em] ${subTitleColor}`}
+            className={`mt-0.5 truncate font-bold uppercase ${subTitleSize} ${subTitleColor}`}
           >
             Radiology Workflow · Explainable AI
           </span>
@@ -77,7 +85,7 @@ export function Logo({
   return (
     <Link
       href={href}
-      className="inline-flex shrink-0 rounded-[8px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      className="inline-flex min-w-0 max-w-full rounded-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
     >
       {content}
     </Link>

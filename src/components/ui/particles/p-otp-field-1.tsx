@@ -34,7 +34,6 @@ export function OtpFieldParticle({
       return;
     }
 
-    // Handle multi-character input or single digit
     const next = [...value];
     for (let i = 0; i < digitsOnly.length && index + i < length; i++) {
       next[index + i] = digitsOnly[i];
@@ -77,17 +76,17 @@ export function OtpFieldParticle({
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3.5">
       <div
         role="group"
         aria-label="Mã xác thực OTP 6 chữ số"
-        className="flex items-center justify-between gap-2 sm:gap-2.5"
+        className="flex items-center justify-between gap-2 sm:gap-3"
       >
         {Array.from({ length }).map((_, index) => {
           const digit = value[index] ?? "";
           const isFilled = Boolean(digit);
           return (
-            <div key={index} className=" flex items-center gap-2">
+            <div key={index} className="flex items-center gap-2">
               <input
                 ref={(el) => {
                   inputRefs.current[index] = el;
@@ -104,18 +103,18 @@ export function OtpFieldParticle({
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 onPaste={handlePaste}
                 onFocus={(e) => e.currentTarget.select()}
-                className={`size-12 sm:size-13 rounded-xl border text-center text-lg font-bold tabular-nums shadow-xs outline-none transition-all duration-150 ${
+                className={`size-13 sm:size-15 rounded-2xl border-2 text-center text-[22px] font-black tabular-nums shadow-xs outline-none transition-all duration-150 ${
                   hasError
                     ? "border-critical bg-red-50/60 text-critical focus:border-critical focus:ring-4 focus:ring-critical/15"
                     : isFilled
-                      ? "border-primary-600 bg-primary-75/70 text-primary-800 ring-2 ring-primary-600/15"
-                      : "border-border bg-white text-text hover:border-primary-400 focus:border-primary-600 focus:bg-white focus:ring-4 focus:ring-primary-600/15"
+                      ? "border-primary-600 bg-primary-75/70 text-primary-900 ring-3 ring-primary-600/15"
+                      : "border-primary-200 bg-white text-primary-950 hover:border-primary-500 focus:border-primary-600 focus:bg-white focus:ring-4 focus:ring-primary-600/15"
                 }`}
               />
               {index === 2 && (
                 <span
                   aria-hidden="true"
-                  className="hidden text-lg font-bold text-primary-400 sm:inline-block"
+                  className="hidden text-xl font-black text-primary-400 sm:inline-block"
                 >
                   –
                 </span>
@@ -125,12 +124,12 @@ export function OtpFieldParticle({
         })}
       </div>
 
-      <div className="flex items-center justify-between text-xs text-text-secondary">
+      <div className="flex items-center justify-between text-[13.5px] font-medium text-text-secondary">
         <span>Hỗ trợ dán nhanh (Ctrl+V) hoặc phím mũi tên</span>
         <button
           type="button"
           onClick={() => onChange(["2", "8", "4", "9", "1", "6"])}
-          className="font-semibold text-primary-600 hover:text-primary-700 hover:underline"
+          className="font-bold text-primary-700 hover:text-primary-800 hover:underline"
         >
           Điền nhanh mã Demo (284916)
         </button>

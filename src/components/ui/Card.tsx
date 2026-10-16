@@ -17,16 +17,16 @@ export function Card({
     accent === "bottom"
       ? "border-b-[5px] border-b-primary-600 bg-primary-75/40"
       : accent === "left"
-        ? "border-l-4 border-l-primary-600"
+        ? "border-l-[5px] border-l-primary-600"
         : accent === "top"
-          ? "border-t-4 border-t-primary-600"
+          ? "border-t-[5px] border-t-primary-600"
           : "";
 
   return (
     <div
-      className={`rounded-xl border border-border bg-card overview-wrapper-shadow ${
+      className={`rounded-2xl border border-primary-100 bg-card overview-wrapper-shadow ${
         lift ? "card-lift" : ""
-      } ${padding ? "p-5" : ""} ${accentClass} ${className}`}
+      } ${padding ? "p-6 sm:p-7" : ""} ${accentClass} ${className}`}
     >
       {children}
     </div>
@@ -43,11 +43,13 @@ export function CardHeader({
   action?: ReactNode;
 }) {
   return (
-    <div className="mb-4 flex items-start justify-between gap-3 border-b border-primary-50 pb-3">
+    <div className="mb-5 flex items-start justify-between gap-4 border-b border-primary-100 pb-4">
       <div>
-        <h2 className="heading-2 text-primary-800">{title}</h2>
+        <h2 className="text-[20px] font-extrabold text-primary-950">{title}</h2>
         {description && (
-          <p className="mt-0.5 text-xs text-text-secondary">{description}</p>
+          <p className="mt-1 text-[14.5px] font-medium text-text-secondary">
+            {description}
+          </p>
         )}
       </div>
       {action}

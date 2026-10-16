@@ -4,13 +4,13 @@ import { Topbar } from "@/components/app-shell/Topbar";
 
 function SidebarFallback() {
   return (
-    <aside className="h-full w-[256px] shrink-0 bg-primary-700" aria-hidden />
+    <aside className="h-full w-[296px] shrink-0 bg-[#063268]" aria-hidden />
   );
 }
 
 function TopbarFallback() {
   return (
-    <header className="h-16 shrink-0 border-b border-primary-100 bg-white" aria-hidden />
+    <header className="h-[76px] shrink-0 border-b border-primary-100 bg-white" aria-hidden />
   );
 }
 
@@ -28,7 +28,7 @@ export default function DashboardLayout({
         <Suspense fallback={<TopbarFallback />}>
           <Topbar />
         </Suspense>
-        <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-6">
+        <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-6 sm:p-8">
           {children}
         </main>
       </div>

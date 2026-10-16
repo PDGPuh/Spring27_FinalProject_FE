@@ -33,39 +33,39 @@ export default function TwoFactorPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col justify-between bg-linear-overview px-4 py-8 sm:px-6">
-      <div className="mx-auto flex w-full max-w-[1120px] items-center justify-between">
+    <div className="flex min-h-screen flex-col justify-between bg-linear-overview px-5 py-8 sm:px-8">
+      <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between">
         <Logo href="/" />
         <Link
           href="/dang-nhap"
-          className="inline-flex items-center gap-1.5 rounded-lg border border-primary-600/30 bg-white px-3.5 py-1.5 text-xs font-semibold text-primary-600 transition-colors hover:bg-primary-50"
+          className="inline-flex items-center gap-2 rounded-xl border border-primary-600/35 bg-white px-4 py-2.5 text-[14px] font-bold text-primary-700 shadow-2xs transition-colors hover:bg-primary-50"
         >
-          <ArrowLeft className="size-3.5" /> Quay lại đăng nhập
+          <ArrowLeft className="size-4" /> Quay lại đăng nhập
         </Link>
       </div>
 
-      <div className="mx-auto my-8 w-full max-w-[460px]">
-        <div className="relative overflow-hidden rounded-2xl border border-primary-100 bg-white p-7 sm:p-9 overview-wrapper-shadow border-t-4 border-t-primary-600">
-          <BorderBeam size={240} duration={11} colorFrom="#0096d1" colorTo="#0d71ba" />
+      <div className="mx-auto my-8 w-full max-w-[540px]">
+        <div className="relative overflow-hidden rounded-3xl border border-primary-100 border-t-[5px] border-t-primary-600 bg-white p-8 sm:p-10 overview-wrapper-shadow">
+          <BorderBeam size={260} duration={11} colorFrom="#0096d1" colorTo="#0d71ba" />
 
-          <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-full bg-primary-50 text-primary-600 shadow-2xs">
-            <KeyRound className="size-7" />
+          <div className="mx-auto mb-6 flex size-20 items-center justify-center rounded-2xl bg-primary-50 text-primary-600 shadow-2xs">
+            <KeyRound className="size-9" />
           </div>
 
           <div className="text-center">
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary-75 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.04em] text-primary-700">
-              <ShieldCheck className="size-3.5" /> Bảo mật hai lớp (2FA)
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-75 px-3.5 py-1.5 text-[12.5px] font-extrabold uppercase tracking-[0.04em] text-primary-800">
+              <ShieldCheck className="size-4 text-primary-600" /> Bảo mật hai lớp (2FA)
             </span>
-            <h1 className="heading-1 mt-2.5 text-primary-800">
+            <h1 className="mt-3 text-[28px] font-black tracking-tight text-primary-950 sm:text-[30px]">
               Xác thực hai lớp (2FA)
             </h1>
-            <p className="mt-1.5 text-sm text-text-secondary">
+            <p className="mt-2 text-[15.5px] font-medium leading-relaxed text-text-secondary">
               Nhập mã gồm 6 chữ số từ ứng dụng xác thực hoặc SMS đã gửi tới thiết bị đã
               đăng ký.
             </p>
           </div>
 
-          <form onSubmit={submit} className="mt-7 flex flex-col gap-5">
+          <form onSubmit={submit} className="mt-8 flex flex-col gap-6">
             {/* Coss UI / Base UI 6-digit OTP Input Particle */}
             <OtpFieldParticle
               value={digits}
@@ -74,17 +74,19 @@ export default function TwoFactorPage() {
             />
 
             {error && (
-              <div className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs font-medium text-critical">
+              <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] font-bold text-critical">
                 {error}
               </div>
             )}
 
-            <div className="flex items-center justify-between rounded-lg bg-primary-50/70 px-3.5 py-2.5 text-xs text-text-secondary">
+            <div className="flex items-center justify-between rounded-xl border border-primary-100 bg-primary-50/75 px-4 py-3 text-[14px] font-semibold text-text-secondary">
               <span>Hiệu lực mã xác thực còn lại:</span>
-              <span className="font-bold text-primary-700 tabular-nums">04:32</span>
+              <span className="font-mono text-[15px] font-black text-primary-800 tabular-nums">
+                04:32
+              </span>
             </div>
 
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3">
               <Button type="submit" className="w-full" size="lg">
                 Xác nhận & Vào Hệ thống
               </Button>
@@ -94,7 +96,7 @@ export default function TwoFactorPage() {
                   setDigits(["", "", "", "", "", ""]);
                   setError("");
                 }}
-                className="w-full rounded-lg py-2 text-center text-xs font-semibold text-primary-600 transition-colors hover:bg-primary-50 hover:text-primary-700"
+                className="w-full rounded-xl py-2.5 text-center text-[14px] font-bold text-primary-700 transition-colors hover:bg-primary-50 hover:text-primary-800"
               >
                 Gửi lại mã OTP mới
               </button>
@@ -103,7 +105,7 @@ export default function TwoFactorPage() {
         </div>
       </div>
 
-      <p className="text-center text-xs text-text-secondary">
+      <p className="text-center text-[14px] font-medium text-text-secondary">
         © 2026 Hệ thống X-quang AI · Khoa Chẩn đoán Hình ảnh · Xác thực An toàn Thông tin
       </p>
     </div>

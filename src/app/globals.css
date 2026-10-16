@@ -4,14 +4,16 @@
   /* UMC HCMC (bvdaihoc.com.vn) Core Medical Blue Palette */
   --primary-50: #edf4fd;
   --primary-75: #ecfaff;
-  --primary-100: #c9f1ff;
-  --primary-200: #52c8f4;
+  --primary-100: #d8f3ff;
+  --primary-200: #9ee0ff;
+  --primary-300: #52c8f4;
   --primary-400: #0096d1;
   --primary-500: #0d68aa;
   --primary-600: #0d71ba;
   --primary-700: #08529e;
   --primary-800: #003d69;
-  --primary-900: #203a72;
+  --primary-900: #162f59;
+  --primary-950: #0a192f;
 
   /* Semantic Mapping for x-quang Application */
   --primary: #0d71ba;
@@ -28,7 +30,7 @@
   --warning: #d97706;
   --critical: #dc2626;
   --info: #0096d1;
-  --ai: #0d71ba;
+  --ai: #6d28d9;
 
   /* Dark-Room Diagnostic DICOM Viewer Tokens (Preserved for Eye Ergonomics) */
   --viewer-bg: #050b12;
@@ -48,12 +50,14 @@
   --color-primary-75: var(--primary-75);
   --color-primary-100: var(--primary-100);
   --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
   --color-primary-400: var(--primary-400);
   --color-primary-500: var(--primary-500);
   --color-primary-600: var(--primary-600);
   --color-primary-700: var(--primary-700);
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
 
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
@@ -77,8 +81,20 @@
   --color-viewer-muted: var(--viewer-muted);
   --font-sans: var(--font-geist-sans), "Roboto", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --radius-btn: 8px;
-  --radius-card: 12px;
+  --radius-btn: 10px;
+  --radius-card: 16px;
+
+  /* Generous Clinical Typography Scale (Eliminates cramped/tiny text across all pages) */
+  --text-xs: 0.84375rem;
+  --text-xs--line-height: 1.45;
+  --text-sm: 0.95rem;
+  --text-sm--line-height: 1.55;
+  --text-base: 1.03125rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: 1.5;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.4;
 }
 
 @layer base {
@@ -96,8 +112,8 @@
     background: var(--background);
     color: var(--text);
     font-family: var(--font-geist-sans), "Roboto", system-ui, sans-serif;
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   ::selection {
@@ -107,67 +123,93 @@
 }
 
 /* ==========================================================================
-   UMC HCMC (bvdaihoc.com.vn) Authentic Typography Scale
+   UMC HCMC (bvdaihoc.com.vn) Authentic Typography Scale (Full-Bodied)
    ========================================================================== */
 .display-1 {
-  font-size: 38px;
+  font-size: 40px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 800;
 }
 .display-2 {
-  font-size: 44px;
+  font-size: 46px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 800;
 }
 .display-3 {
-  font-size: 34px;
-  line-height: 1.2;
-  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.22;
+  font-weight: 800;
 }
 .display-4 {
-  font-size: 24px;
-  line-height: 1.45;
-  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: 700;
 }
 .heading-1 {
-  font-size: 24px;
-  line-height: 1.4;
-  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 800;
 }
 .heading-2 {
-  font-size: 18px;
-  line-height: 1.5;
-  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 700;
 }
 .title-1 {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 700;
 }
 .title-2 {
-  font-size: 14px;
+  font-size: 15.5px;
   line-height: 1.5;
   font-weight: 600;
 }
 .title-3 {
-  font-size: 14px;
-  line-height: 1.25;
+  font-size: 15px;
+  line-height: 1.35;
   font-weight: 600;
 }
 .title-5 {
-  font-size: 12px;
+  font-size: 13.5px;
   line-height: 1.5;
   font-weight: 600;
 }
 .label-2 {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   font-weight: 500;
 }
 .label-3 {
-  font-size: 13px;
-  line-height: 1.3;
+  font-size: 14px;
+  line-height: 1.35;
   font-weight: 500;
+}
+
+/* Boost small arbitrary font classes across all clinical views for high ergonomics */
+main .text-\[10px\],
+main .text-\[10\.5px\] {
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+}
+main .text-\[11px\] {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+main .text-\[12px\],
+main .text-\[12\.5px\] {
+  font-size: 13.75px !important;
+  line-height: 1.5 !important;
+}
+main .text-\[13px\],
+main .text-\[13\.5px\] {
+  font-size: 14.75px !important;
+  line-height: 1.5 !important;
+}
+main .text-\[14px\],
+main .text-\[14\.5px\] {
+  font-size: 15.5px !important;
+  line-height: 1.55 !important;
 }
 
 /* ==========================================================================
