@@ -34,16 +34,16 @@ export const tatTrend = [
 ];
 
 export const aiDoctorAgreement = [
-  { name: "Đồng thuận", value: 92, color: "#16A34A" },
-  { name: "Chỉnh sửa", value: 6, color: "#F59E0B" },
-  { name: "Bác bỏ", value: 2, color: "#DC2626" },
+  { name: "Đồng thuận", value: 92, color: "#0d71ba" },
+  { name: "Chỉnh sửa", value: 6, color: "#d97706" },
+  { name: "Bác bỏ", value: 2, color: "#dc2626" },
 ];
 
 export const worklistStatusMix = [
-  { name: "Chờ đọc", value: 18, color: "#0891B2" },
-  { name: "AI Critical", value: 5, color: "#DC2626" },
-  { name: "Đang đọc", value: 2, color: "#F59E0B" },
-  { name: "Hoàn tất", value: 3, color: "#16A34A" },
+  { name: "Chờ đọc", value: 18, color: "#0d71ba" },
+  { name: "AI Critical", value: 5, color: "#dc2626" },
+  { name: "Đang đọc", value: 2, color: "#0096d1" },
+  { name: "Hoàn tất", value: 3, color: "#16a34a" },
 ];
 
 export const pathologyMix = [

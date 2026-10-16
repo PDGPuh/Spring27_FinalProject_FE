@@ -1,123 +1,175 @@
 import Link from "next/link";
+import { CheckCircle2, Lock, ShieldCheck, Stethoscope } from "lucide-react";
 import { Logo } from "@/components/branding/Logo";
 import { Button } from "@/components/ui/Button";
+import { BorderBeam } from "@/components/magicui/BorderBeam";
 
 export const metadata = {
   title: "Đăng nhập | Hệ thống X-quang AI",
-  description: "Đăng nhập vào Hệ thống X-quang AI",
 };
 
 export default function LoginPage() {
   return (
-    <div className="grid min-h-screen lg:grid-cols-[2fr_3fr]">
-      <aside className="relative hidden overflow-hidden bg-nav-dark px-10 py-12 text-white lg:flex lg:flex-col">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,_rgba(8,145,178,0.35),_transparent_45%),radial-gradient(ellipse_at_80%_80%,_rgba(124,58,237,0.18),_transparent_40%)]" />
-        <div className="relative">
+    <div className="grid min-h-screen lg:grid-cols-[1.05fr_1.15fr]">
+      {/* Left Institutional Banner */}
+      <aside className="relative hidden flex-col justify-between overflow-hidden bg-gradient-to-br from-primary-500 via-primary-600 to-primary-800 px-10 py-12 text-white lg:flex">
+        <div className="pointer-events-none absolute -right-16 -top-16 size-80 rounded-full bg-primary-400/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 -left-16 size-80 rounded-full bg-primary-200/15 blur-3xl" />
+
+        <div className="relative z-10">
           <Logo variant="onDark" href="/" />
         </div>
-        <div className="relative mt-auto max-w-md pb-8">
-          <h1 className="text-[32px] font-semibold leading-tight tracking-tight">
-            Quản lý quy trình X-quang trên một nền tảng thống nhất.
+
+        <div className="relative z-10 my-auto max-w-lg py-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.04em] text-primary-100">
+            <Stethoscope className="size-3.5" />
+            Radiology Workflow · Explainable AI
+          </span>
+          <h1 className="display-3 mt-4 text-white">
+            Quy trình đọc phim X-quang có giải thích, chuẩn hóa cho bệnh viện.
           </h1>
-          <div className="mt-8 grid grid-cols-2 gap-3">
-            {["DICOM", "AI hỗ trợ", "Explainable AI", "Radiology Workflow"].map(
-              (item) => (
-                <div
-                  key={item}
-                  className="rounded-[10px] border border-white/10 bg-white/5 px-3 py-3 text-sm"
-                >
-                  {item}
-                </div>
-              ),
-            )}
+          <p className="mt-4 text-sm leading-relaxed text-primary-75">
+            Kết nối từ tiếp đón, chỉ định, kỹ thuật chụp đến AI/XAI và bác sĩ kết luận trên
+            một nền tảng thống nhất, có kiểm soát phân quyền và nhật ký kiểm toán.
+          </p>
+
+          <div className="mt-7 grid grid-cols-2 gap-3">
+            {[
+              ["Phân quyền theo vai trò", "8 vai trò chuyên biệt trong quy trình"],
+              ["Explainable AI", "Grad-CAM++ · vùng nhiệt trực quan"],
+              ["Human-in-the-loop", "Bác sĩ luôn là người ký kết luận cuối"],
+              ["Bảo mật đa lớp", "Xác thực hai lớp (2FA) & nhật ký truy cập"],
+            ].map(([title, sub]) => (
+              <div
+                key={title}
+                className="rounded-xl border border-white/15 bg-white/10 p-3.5 backdrop-blur-xs"
+              >
+                <p className="flex items-center gap-1.5 text-xs font-bold text-white">
+                  <CheckCircle2 className="size-3.5 text-primary-200" />
+                  {title}
+                </p>
+                <p className="mt-1 text-[11px] text-primary-100">{sub}</p>
+              </div>
+            ))}
           </div>
-          <div className="mt-10 h-36 overflow-hidden rounded-[12px] border border-white/10 bg-[#071018]">
-            <div className="relative h-full">
-              <div className="absolute inset-4 rounded-md bg-[radial-gradient(ellipse_at_center,_#1f3a4d_0%,_#071018_70%)]" />
-              <div className="absolute left-[32%] top-[28%] h-[40%] w-[22%] rounded-full bg-[radial-gradient(circle,_rgba(8,145,178,0.5)_0%,_transparent_70%)]" />
-              <p className="absolute bottom-3 left-4 text-[11px] text-slate-400">
-                Minh họa abstract DICOM / X-ray
-              </p>
-            </div>
-          </div>
+        </div>
+
+        <div className="relative z-10 flex items-center justify-between border-t border-white/15 pt-4 text-xs text-primary-100">
+          <span>Phiên bản lâm sàng 2.4 · 2026</span>
+          <span>Tuân thủ quy định bảo mật dữ liệu y tế</span>
         </div>
       </aside>
 
-      <main className="flex flex-col bg-background px-6 py-10">
-        <div className="mb-8 lg:hidden">
-          <Logo href="/" />
+      {/* Right Login Card */}
+      <main className="flex flex-col justify-between bg-linear-overview px-4 py-8 sm:px-8">
+        <div className="flex items-center justify-between lg:justify-end">
+          <div className="lg:hidden">
+            <Logo href="/" />
+          </div>
+          <Link
+            href="/"
+            className="rounded-lg border border-primary-600/30 bg-white px-3.5 py-1.5 text-xs font-semibold text-primary-600 transition-colors hover:bg-primary-50"
+          >
+            ← Quay lại trang giới thiệu
+          </Link>
         </div>
-        <div className="m-auto w-full max-w-[420px]">
-          <div className="rounded-[12px] border border-border bg-card p-8 shadow-[0_16px_40px_-28px_rgba(15,42,56,0.35)]">
-            <h2 className="text-[28px] font-semibold tracking-tight">Đăng nhập</h2>
-            <p className="mt-1 text-sm text-text-secondary">
-              Đăng nhập vào tài khoản của bạn
-            </p>
 
-            <form className="mt-8 space-y-4" action="/xac-thuc-2fa">
+        <div className="mx-auto my-8 w-full max-w-[460px]">
+          <div className="relative overflow-hidden rounded-2xl border border-primary-100 bg-white p-7 sm:p-9 overview-wrapper-shadow border-t-4 border-t-primary-600">
+            <BorderBeam size={240} duration={12} colorFrom="#0096d1" colorTo="#0d71ba" />
+
+            <div className="flex items-center gap-3">
+              <div className="flex size-12 items-center justify-center rounded-full bg-primary-50 text-primary-600">
+                <Lock className="size-5" />
+              </div>
+              <div>
+                <h2 className="heading-1 text-primary-800">Đăng nhập hệ thống</h2>
+                <p className="text-xs text-text-secondary">
+                  Sử dụng tài khoản nội bộ bệnh viện hoặc SSO được cấp phát.
+                </p>
+              </div>
+            </div>
+
+            <form className="mt-6 flex flex-col gap-4" action="/xac-thuc-2fa">
               <label className="block">
-                <span className="mb-1.5 block text-sm font-medium">
-                  Email hoặc tên đăng nhập
+                <span className="mb-1.5 block text-xs font-bold uppercase tracking-[0.03em] text-primary-800">
+                  Tên đăng nhập hoặc Email
                 </span>
                 <input
                   type="text"
                   name="username"
                   defaultValue="bs.nguyenvana"
-                  className="h-11 w-full rounded-[8px] border border-border bg-white px-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  placeholder="email@benhvien.vn"
+                  className="h-11 w-full rounded-lg border border-gray-200 bg-white px-3.5 text-sm outline-none transition-colors hover:border-primary-600 focus:border-primary-600 focus:ring-3 focus:ring-primary-600/15"
+                  placeholder="ten.dangnhap hoặc email@benhvien.vn"
                   autoComplete="username"
                 />
               </label>
+
               <label className="block">
-                <span className="mb-1.5 block text-sm font-medium">Mật khẩu</span>
+                <span className="mb-1.5 block text-xs font-bold uppercase tracking-[0.03em] text-primary-800">
+                  Mật khẩu
+                </span>
                 <input
                   type="password"
                   name="password"
                   defaultValue="••••••••"
-                  className="h-11 w-full rounded-[8px] border border-border bg-white px-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  className="h-11 w-full rounded-lg border border-gray-200 bg-white px-3.5 text-sm outline-none transition-colors hover:border-primary-600 focus:border-primary-600 focus:ring-3 focus:ring-primary-600/15"
                   autoComplete="current-password"
                 />
               </label>
-              <div className="flex items-center justify-between text-sm">
-                <label className="inline-flex items-center gap-2 text-text-secondary">
+
+              <div className="flex items-center justify-between text-xs">
+                <label className="inline-flex cursor-pointer items-center gap-2 text-text-secondary">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
+                    className="size-4 rounded border-gray-300 accent-primary-600"
                     defaultChecked
                   />
-                  Ghi nhớ đăng nhập
+                  Ghi nhớ đăng nhập trên thiết bị này
                 </label>
-                <Link href="#" className="font-medium text-primary hover:text-primary-dark">
+                <Link
+                  href="/xac-thuc-2fa"
+                  className="font-semibold text-primary-600 hover:text-primary-700 hover:underline"
+                >
                   Quên mật khẩu?
                 </Link>
               </div>
-              <Button type="submit" className="w-full" size="lg">
-                Đăng nhập
-              </Button>
-              <Button type="button" variant="secondary" className="w-full" size="lg">
-                Đăng nhập bằng SSO
-              </Button>
+
+              <div className="mt-1 flex flex-col gap-2.5">
+                <Button type="submit" className="w-full" size="lg">
+                  Đăng nhập
+                </Button>
+                <Button type="button" variant="secondary" className="w-full" size="lg">
+                  Đăng nhập bằng SSO
+                </Button>
+              </div>
             </form>
 
-            <div className="mt-6 border-t border-border pt-5">
-              <p className="mb-2 text-xs font-medium text-text-secondary">
-                Vào nhanh demo (không auth thật)
-              </p>
-              <div className="flex flex-wrap gap-2">
+            {/* Quick Role Switcher for Demo Evaluation */}
+            <div className="mt-6 border-t border-primary-100 pt-5">
+              <div className="mb-2.5 flex items-center justify-between">
+                <p className="text-xs font-bold uppercase tracking-[0.03em] text-primary-700">
+                  Vào nhanh giao diện theo vai trò (demo)
+                </p>
+                <span className="inline-flex items-center gap-1 text-[11px] font-medium text-primary-600">
+                  <ShieldCheck className="size-3.5" /> 1-Click
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {[
-                  { href: "/dashboard/worklist?role=cdha", label: "CĐHA" },
-                  { href: "/dashboard/benh-nhan?role=chidinh", label: "Chỉ định" },
-                  { href: "/dashboard/hang-doi?role=ktv", label: "KTV" },
+                  { href: "/dashboard/worklist?role=cdha", label: "Bác sĩ CĐHA" },
+                  { href: "/dashboard/benh-nhan?role=chidinh", label: "BS chỉ định" },
+                  { href: "/dashboard/hang-doi?role=ktv", label: "Kỹ thuật viên" },
                   { href: "/dashboard/hang-doi?role=tiepdon", label: "Tiếp đón" },
-                  { href: "/dashboard/dataset?role=researcher", label: "Research" },
-                  { href: "/dashboard/co-so?role=facility", label: "Facility" },
-                  { href: "/dashboard?role=admin", label: "Admin" },
-                  { href: "/portal", label: "Portal BN" },
+                  { href: "/dashboard/dataset?role=researcher", label: "Nghiên cứu" },
+                  { href: "/dashboard/co-so?role=facility", label: "QL cơ sở" },
+                  { href: "/dashboard?role=admin", label: "Quản trị" },
+                  { href: "/portal", label: "Bệnh nhân" },
                 ].map((d) => (
                   <Link
                     key={d.href}
                     href={d.href}
-                    className="rounded-[6px] border border-border bg-background px-2.5 py-1 text-[11px] font-medium text-text hover:border-primary hover:text-primary"
+                    className="rounded-lg border border-primary-200 bg-primary-50/70 px-2.5 py-2 text-center text-xs font-semibold text-primary-700 transition-all hover:border-primary-600 hover:bg-primary-600 hover:text-white"
                   >
                     {d.label}
                   </Link>
@@ -125,13 +177,11 @@ export default function LoginPage() {
               </div>
             </div>
           </div>
-          <p className="mt-6 text-center text-xs text-text-secondary">
-            © 2026 Hệ thống X-quang AI ·{" "}
-            <Link href="#" className="underline-offset-2 hover:underline">
-              Chính sách bảo mật
-            </Link>
-          </p>
         </div>
+
+        <p className="text-center text-xs text-text-secondary">
+          Cần hỗ trợ tài khoản? Liên hệ bộ phận CNTT nội bộ (ext. 1080).
+        </p>
       </main>
     </div>
   );

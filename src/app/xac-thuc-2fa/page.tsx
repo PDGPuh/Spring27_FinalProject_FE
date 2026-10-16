@@ -3,85 +3,109 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ArrowLeft, KeyRound, ShieldCheck } from "lucide-react";
 import { Logo } from "@/components/branding/Logo";
 import { Button } from "@/components/ui/Button";
+import { BorderBeam } from "@/components/magicui/BorderBeam";
+import { OtpFieldParticle } from "@/components/ui/particles/p-otp-field-1";
 
 export default function TwoFactorPage() {
   const router = useRouter();
   const [digits, setDigits] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState("");
 
-  const onChange = (index: number, value: string) => {
-    const v = value.replace(/\D/g, "").slice(-1);
-    const next = [...digits];
-    next[index] = v;
+  const handleOtpChange = (next: string[]) => {
     setDigits(next);
-    setError("");
-    if (v && index < 5) {
-      const el = document.getElementById(`otp-${index + 1}`);
-      el?.focus();
-    }
+    if (error) setError("");
   };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (digits.some((d) => !d)) {
-      setError("Vui lòng nhập đủ 6 chữ số.");
+      setError("Vui lòng nhập đầy đủ 6 chữ số xác thực OTP.");
       return;
     }
     if (digits.join("") === "000000") {
-      setError("Mã đã hết hạn. Vui lòng yêu cầu mã mới.");
+      setError("Mã xác thực đã hết hạn. Vui lòng yêu cầu gửi lại mã mới.");
       return;
     }
     router.push("/dashboard");
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-6 py-10">
-      <div className="w-full max-w-[420px]">
-        <div className="mb-8 flex justify-center">
-          <Logo href="/" />
-        </div>
-        <div className="rounded-[12px] border border-border bg-card p-8">
-          <h1 className="text-[28px] font-semibold tracking-tight">Xác thực tài khoản</h1>
-          <p className="mt-2 text-sm text-text-secondary">
-            Nhập mã gồm 6 chữ số được gửi đến thiết bị xác thực của bạn.
-          </p>
-          <form onSubmit={submit} className="mt-8">
-            <div className="flex justify-between gap-2">
-              {digits.map((d, i) => (
-                <input
-                  key={i}
-                  id={`otp-${i}`}
-                  inputMode="numeric"
-                  maxLength={1}
-                  value={d}
-                  onChange={(e) => onChange(i, e.target.value)}
-                  className="h-12 w-12 rounded-[8px] border border-border text-center text-lg font-semibold outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                />
-              ))}
-            </div>
-            {error && <p className="mt-3 text-sm text-critical">{error}</p>}
-            <p className="mt-4 text-xs text-text-secondary">
-              Mã còn hiệu lực trong <span className="font-medium text-text">04:32</span>
+    <div className="flex min-h-screen flex-col justify-between bg-linear-overview px-4 py-8 sm:px-6">
+      <div className="mx-auto flex w-full max-w-[1120px] items-center justify-between">
+        <Logo href="/" />
+        <Link
+          href="/dang-nhap"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-primary-600/30 bg-white px-3.5 py-1.5 text-xs font-semibold text-primary-600 transition-colors hover:bg-primary-50"
+        >
+          <ArrowLeft className="size-3.5" /> Quay lại đăng nhập
+        </Link>
+      </div>
+
+      <div className="mx-auto my-8 w-full max-w-[460px]">
+        <div className="relative overflow-hidden rounded-2xl border border-primary-100 bg-white p-7 sm:p-9 overview-wrapper-shadow border-t-4 border-t-primary-600">
+          <BorderBeam size={240} duration={11} colorFrom="#0096d1" colorTo="#0d71ba" />
+
+          <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-full bg-primary-50 text-primary-600 shadow-2xs">
+            <KeyRound className="size-7" />
+          </div>
+
+          <div className="text-center">
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary-75 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.04em] text-primary-700">
+              <ShieldCheck className="size-3.5" /> Bảo mật hai lớp (2FA)
+            </span>
+            <h1 className="heading-1 mt-2.5 text-primary-800">
+              Xác thực hai lớp (2FA)
+            </h1>
+            <p className="mt-1.5 text-sm text-text-secondary">
+              Nhập mã gồm 6 chữ số từ ứng dụng xác thực hoặc SMS đã gửi tới thiết bị đã
+              đăng ký.
             </p>
-            <Button type="submit" className="mt-6 w-full" size="lg">
-              Xác nhận
-            </Button>
-            <button
-              type="button"
-              className="mt-3 w-full text-center text-sm font-medium text-primary"
-            >
-              Gửi lại mã
-            </button>
+          </div>
+
+          <form onSubmit={submit} className="mt-7 flex flex-col gap-5">
+            {/* Coss UI / Base UI 6-digit OTP Input Particle */}
+            <OtpFieldParticle
+              value={digits}
+              onChange={handleOtpChange}
+              hasError={Boolean(error)}
+            />
+
+            {error && (
+              <div className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs font-medium text-critical">
+                {error}
+              </div>
+            )}
+
+            <div className="flex items-center justify-between rounded-lg bg-primary-50/70 px-3.5 py-2.5 text-xs text-text-secondary">
+              <span>Hiệu lực mã xác thực còn lại:</span>
+              <span className="font-bold text-primary-700 tabular-nums">04:32</span>
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              <Button type="submit" className="w-full" size="lg">
+                Xác nhận & Vào Hệ thống
+              </Button>
+              <button
+                type="button"
+                onClick={() => {
+                  setDigits(["", "", "", "", "", ""]);
+                  setError("");
+                }}
+                className="w-full rounded-lg py-2 text-center text-xs font-semibold text-primary-600 transition-colors hover:bg-primary-50 hover:text-primary-700"
+              >
+                Gửi lại mã OTP mới
+              </button>
+            </div>
           </form>
         </div>
-        <p className="mt-6 text-center text-xs text-text-secondary">
-          <Link href="/dang-nhap" className="hover:underline">
-            Quay lại đăng nhập
-          </Link>
-        </p>
       </div>
+
+      <p className="text-center text-xs text-text-secondary">
+        © 2026 Hệ thống X-quang AI · Khoa Chẩn đoán Hình ảnh · Xác thực An toàn Thông tin
+      </p>
     </div>
   );
 }

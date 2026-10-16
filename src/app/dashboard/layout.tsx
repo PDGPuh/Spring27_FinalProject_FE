@@ -4,13 +4,13 @@ import { Topbar } from "@/components/app-shell/Topbar";
 
 function SidebarFallback() {
   return (
-    <aside className="h-full w-[240px] shrink-0 bg-nav-dark" aria-hidden />
+    <aside className="h-full w-[256px] shrink-0 bg-primary-700" aria-hidden />
   );
 }
 
 function TopbarFallback() {
   return (
-    <header className="h-16 shrink-0 border-b border-border bg-card" aria-hidden />
+    <header className="h-16 shrink-0 border-b border-primary-100 bg-white" aria-hidden />
   );
 }
 

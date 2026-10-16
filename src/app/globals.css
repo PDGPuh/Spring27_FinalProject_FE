@@ -1,33 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #0891b2;
-  --primary-dark: #0e7490;
-  --primary-soft: #ecfeff;
-  --nav-dark: #0f2a38;
-  --background: #f7fafc;
+  /* UMC HCMC (bvdaihoc.com.vn) Core Medical Blue Palette */
+  --primary-50: #edf4fd;
+  --primary-75: #ecfaff;
+  --primary-100: #c9f1ff;
+  --primary-200: #52c8f4;
+  --primary-400: #0096d1;
+  --primary-500: #0d68aa;
+  --primary-600: #0d71ba;
+  --primary-700: #08529e;
+  --primary-800: #003d69;
+  --primary-900: #203a72;
+
+  /* Semantic Mapping for x-quang Application */
+  --primary: #0d71ba;
+  --primary-dark: #08529e;
+  --primary-soft: #ecfaff;
+  --nav-dark: #08529e;
+  --background: #f5f9fd;
   --card: #ffffff;
-  --border: #e5e7eb;
-  --text: #0f172a;
-  --text-secondary: #64748b;
-  --muted: #94a3b8;
+  --border: #dbe7f3;
+  --text: #0f2537;
+  --text-secondary: #4b6584;
+  --muted: #7c93ab;
   --success: #16a34a;
-  --warning: #f59e0b;
+  --warning: #d97706;
   --critical: #dc2626;
-  --info: #2563eb;
-  --ai: #7c3aed;
+  --info: #0096d1;
+  --ai: #0d71ba;
+
+  /* Dark-Room Diagnostic DICOM Viewer Tokens (Preserved for Eye Ergonomics) */
   --viewer-bg: #050b12;
   --viewer-panel: #0b1722;
-  --viewer-border: #213241;
+  --viewer-border: #1e3448;
   --viewer-text: #e5eef5;
   --viewer-muted: #8ca0b3;
+
   --radius-btn: 8px;
   --radius-card: 12px;
-  --shadow-soft: 0 12px 40px -28px rgba(15, 42, 56, 0.35);
-  --shadow-lift: 0 20px 48px -28px rgba(15, 42, 56, 0.42);
+  --shadow-soft: 0 0 30px rgba(0, 0, 0, 0.08);
+  --shadow-lift: 0 8px 24px rgba(13, 113, 186, 0.16), 0 3px 6px rgba(81, 126, 194, 0.1);
 }
 
 @theme inline {
+  --color-primary-50: var(--primary-50);
+  --color-primary-75: var(--primary-75);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-primary-soft: var(--primary-soft);
@@ -48,67 +75,179 @@
   --color-viewer-border: var(--viewer-border);
   --color-viewer-text: var(--viewer-text);
   --color-viewer-muted: var(--viewer-muted);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --radius-btn: 8px;
   --radius-card: 12px;
 }
 
-* {
-  border-color: var(--border);
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font-geist-sans), "Roboto", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 20%, white);
+    color: var(--primary-800);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+/* ==========================================================================
+   UMC HCMC (bvdaihoc.com.vn) Authentic Typography Scale
+   ========================================================================== */
+.display-1 {
+  font-size: 38px;
+  line-height: 1.2;
+  font-weight: 700;
 }
-
-body {
-  background: var(--background);
-  color: var(--text);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+.display-2 {
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.display-3 {
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.display-4 {
+  font-size: 24px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.heading-1 {
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.heading-2 {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.title-1 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.title-2 {
   font-size: 14px;
   line-height: 1.5;
+  font-weight: 600;
+}
+.title-3 {
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+.title-5 {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.label-2 {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.label-3 {
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 500;
 }
 
-::selection {
-  background: color-mix(in srgb, var(--primary) 22%, white);
-  color: var(--text);
+/* ==========================================================================
+   UMC HCMC Signature Healthcare Gradients & Shadows
+   ========================================================================== */
+.bg-linear-overview {
+  background: linear-gradient(190.21deg, #ffffff 20.63%, #beecff 99.23%);
+}
+
+.bg-linear-hero {
+  background: linear-gradient(180deg, rgba(96, 167, 215, 0) 0%, #0d68aa 88%, #0d71ba 100%);
+}
+
+.bg-linear-healthcare {
+  background-image: linear-gradient(-120deg, #0d71ba, rgba(255, 255, 255, 0.2));
+}
+
+.bg-linear-partner {
+  background: linear-gradient(1turn, #ecfaff 65.38%, rgba(253, 254, 255, 0));
+}
+
+.bg-linear-card-dark {
+  background: linear-gradient(180deg, rgba(5, 81, 159, 0) 0%, #05519f 100%);
+}
+
+.overview-wrapper-shadow {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-main-blue {
+  box-shadow:
+    0 8px 20px rgba(0, 102, 255, 0.11),
+    0 3px 5px rgba(81, 126, 194, 0.09);
+}
+
+.shadow-form {
+  box-shadow: 2px 4px 8px rgba(3, 78, 162, 0.1);
+}
+
+.card-icon-shadow {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.18);
 }
 
 .surface-grid {
   background-image:
-    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(8, 145, 178, 0.12), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 0%, rgba(14, 116, 144, 0.08), transparent 50%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(247, 250, 252, 0.65));
+    radial-gradient(ellipse 80% 55% at 15% -10%, rgba(13, 113, 186, 0.12), transparent 58%),
+    radial-gradient(ellipse 65% 45% at 88% 0%, rgba(0, 150, 209, 0.14), transparent 52%),
+    linear-gradient(190.21deg, #ffffff 25%, #ecfaff 100%);
 }
 
 .surface-mesh {
   background-image:
-    linear-gradient(rgba(15, 42, 56, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 42, 56, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(13, 113, 186, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 113, 186, 0.035) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
 .card-lift {
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.25s ease;
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    background-color 0.2s ease;
   box-shadow: var(--shadow-soft);
 }
 
 .card-lift:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
-  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  border-color: color-mix(in srgb, var(--primary) 42%, var(--border));
 }
 
 .btn-press {
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .btn-press:hover {
@@ -119,13 +258,16 @@ body {
   transform: translateY(0);
 }
 
+/* ==========================================================================
+   Magic UI & Micro-Interaction Keyframes
+   ========================================================================== */
 @keyframes float-soft {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
@@ -139,12 +281,30 @@ body {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  100% {
-    background-position: -200% 0;
+  to {
+    transform: translate3d(calc(-100% - var(--gap, 1rem)), 0, 0);
+  }
+}
+
+@keyframes marquee-y {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, calc(-100% - var(--gap, 1rem)), 0);
+  }
+}
+
+@keyframes border-beam-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -156,8 +316,16 @@ body {
   animation: pulse-glow 4.5s ease-in-out infinite;
 }
 
+.animate-marquee {
+  animation: marquee-x var(--duration, 30s) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-y var(--duration, 30s) linear infinite;
+}
+
 .hero-orb {
-  filter: blur(40px);
+  filter: blur(42px);
   animation: pulse-glow 5s ease-in-out infinite;
 }
 
